@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+@font-face {
+  font-family: "잘풀리는오늘 Medium";
+  src: url("./assets/font/잘풀리는오늘 Medium.ttf");
+}
+
+@layer base {
+  html {
+    @apply transition-colors duration-300;
+  }
+  #root {
+    @apply m-auto;
+    width: 85%;
+
+    font-family: "잘풀리는오늘 Medium";
+  }
+}
