@@ -20,7 +20,7 @@ export default function ResetPassword() {
     navigate("/login");
   };
   return (
-    <div className="p-3 flex flex-col justify-center items-center border-2">
+    <div className="p-3 flex flex-col justify-center items-center">
       <h1 className="sm:text-sm md:text-2xl mb-5">
         가입하셨던 이메일을 입력해주세요.
       </h1>

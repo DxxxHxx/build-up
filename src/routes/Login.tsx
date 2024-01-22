@@ -8,7 +8,6 @@ import {
 } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { auth } from "../firebase";
-import { setLogin } from "../manageLoginState";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -51,10 +50,9 @@ export default function Login() {
     try {
       setIsLoading(true);
       // await signInWithEmailAndPassword(auth, info.email, info.password);
-      setPersistence(auth, browserSessionPersistence).then(() => {
+      await setPersistence(auth, browserSessionPersistence).then(() => {
         return signInWithEmailAndPassword(auth, info.email, info.password);
       });
-      setLogin();
       navigate("/free");
     } catch (e) {
       if (e instanceof FirebaseError) {

@@ -11,7 +11,7 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { User } from "firebase/auth";
 import { useSetRecoilState } from "recoil";
 import { hotPostListAtom } from "../recoil";

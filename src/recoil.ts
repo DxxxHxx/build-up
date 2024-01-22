@@ -28,32 +28,3 @@ export const hotPostListAtom = atom<string[]>({
   key: "hotPostList",
   default: [],
 });
-
-// export const postFilteringSelector=selector({
-//   key:'filterSelector',
-//   get:({get})=>{
-//     const filter=get(postFilteringAtom)
-
-//   }
-// })
-// export const fetchdata = selector({
-//   key: "fetchPosts",
-//   get: async () => {
-//     return useData();
-//   },
-// });
-// export const showPostsSelector=selector({
-//   key:'selectShowPost',
-//   get:({get})=>{
-
-//   }
-// })
-// export const loadingAtom = atom({
-//   key: "isLoading",
-//   default: false,
-// });
-
-// export const isLoggedin = atom({
-//   key: "isLoggedin",
-//   default: sessionStorage.getItem('state')?sessionStorage.getItem('state'):sessionStorage.setItem('state','logout'),
-// });

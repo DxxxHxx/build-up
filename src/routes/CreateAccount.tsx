@@ -3,7 +3,6 @@ import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { useNavigate } from "react-router-dom";
-import { setLogin } from "../manageLoginState";
 
 export default function CreateAccount() {
   const [info, setInfo] = useState({
@@ -65,7 +64,6 @@ export default function CreateAccount() {
       // 2. 유저 프로필 설정
       await updateProfile(user, { displayName: info.name });
 
-      setLogin();
       // 3. 홈페이지로 이동
       navigate("/free");
     } catch (e) {
@@ -78,7 +76,7 @@ export default function CreateAccount() {
     }
   };
   return (
-    <div className="p-3 border-2 border-black flex flex-col items-center">
+    <div className="p-3 flex flex-col items-center">
       <h1 className="text-3xl mb-7">회원가입</h1>
       <form onSubmit={onSubmit} className="flex flex-col gap-y-3">
         <label htmlFor="name">

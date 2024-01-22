@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import DropdownFilterList from "../components/DropdownFilterList";
-import { getLogin } from "../manageLoginState";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
@@ -22,7 +21,7 @@ export default function CreateNewPost() {
   const titleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!getLogin()) {
+    if (!auth.currentUser) {
       navigate("/free");
     }
   }, [navigate]);
@@ -33,9 +32,7 @@ export default function CreateNewPost() {
     }
   }, [allSubmitted]);
   ///////////////////////////////////
-  const onChangeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.currentTarget.value);
-  };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // console.log(text);
@@ -68,10 +65,7 @@ export default function CreateNewPost() {
   return (
     <div className="w-full relative">
       <DropdownFilterList setSubmitted={handleSetSubmitted} />
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col items-center gap-y-3"
-      >
+      <form onSubmit={onSubmit} className="flex flex-col items-center gap-y-3">
         <input
           ref={titleRef}
           required

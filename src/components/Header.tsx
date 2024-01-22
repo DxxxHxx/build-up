@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import ToggleThemeBtn from "./ToggleThemeBtn";
-import { getLogin, setLogout } from "../manageLoginState";
 import { FaUserCircle } from "react-icons/fa";
 
 export default function Header() {
+  const user = auth.currentUser;
   const navigate = useNavigate();
   const [refresh, setRefresh] = useState(0);
   const [theme, setTheme] = useState(
@@ -29,7 +29,6 @@ export default function Header() {
       navigate("/login");
     } else {
       await signOut(auth);
-      setLogout();
 
       location.reload();
     }
@@ -46,7 +45,7 @@ export default function Header() {
   };
 
   const handleCreatePostPage = () => {
-    if (getLogin()) {
+    if (user) {
       navigate("/create-new-post");
     } else {
       alert("글 작성은 로그인 후 가능합니다.");
@@ -56,7 +55,7 @@ export default function Header() {
     refreshComponent();
   };
   return (
-    <div className="mb-3 flex justify-between sm:p-2 sm:text-sm md:p-5 md:text-lg  lg:p-8 lg:text-xl lg:font-bold">
+    <div className="mb-3 flex justify-between items-center sm:p-2 sm:text-sm md:p-5 md:text-lg  lg:p-8 lg:text-xl lg:font-bold">
       <button onClick={() => navigate("/free")}>build-up</button>
 
       <div className="sm:hidden md:block">
@@ -64,10 +63,10 @@ export default function Header() {
           <ToggleThemeBtn theme={theme!} onToggle={handleToggle} />
           <button onClick={handleCreatePostPage}>글 쓰기</button>
           <button onClick={handleLoginAndOut}>
-            {getLogin() ? "로그아웃" : "로그인"}
+            {user ? "로그아웃" : "로그인"}
           </button>
 
-          {getLogin() && (
+          {user && (
             <div
               onClick={() => navigate("/profile")}
               className="avatar cursor-pointer"
@@ -105,10 +104,10 @@ export default function Header() {
               </li>
               <li className="z-50">
                 <span onClick={handleLoginAndOut}>
-                  {getLogin() ? "로그아웃" : "로그인"}
+                  {user ? "로그아웃" : "로그인"}
                 </span>
               </li>
-              {getLogin() && (
+              {user && (
                 <li className="z-50">
                   <span
                     onClick={() => {
