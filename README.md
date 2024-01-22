@@ -18,7 +18,8 @@
 
 ## 기술 스택
 
-| JavaScript | TypeScript |  React   |  tailwind css  | Firebase |
-| :--------: | :--------: | :------: |     :-----:    | :------: |
-|   ![javascript](https://github.com/DxxxHxx/build-up/assets/153882976/54b7c399-6b57-44f1-b8dd-cb2be362296a)   |   ![typescript](https://github.com/DxxxHxx/build-up/assets/153882976/eb3d4f74-fd30-4c95-ba44-c9678d619fc0)    | ![react](https://github.com/DxxxHxx/build-up/assets/153882976/43a343ed-1ce4-437a-8dc8-62549e053abc)|   ![6447779-middle](https://github.com/DxxxHxx/build-up/assets/153882976/6ab62914-a415-4c99-8bd2-e89c5ec9a0be)  |     ![png-clipart-firebase-cloud-messaging-google-developers-software-development-kit-google-angle-triangle-thumbnail](https://github.com/DxxxHxx/build-up/assets/153882976/ce1dce32-2e3e-4668-a4f2-901ac0e01403)     |
-
+| 분야             | 사용 기술                  | 비고 |
+| --------------   | --------------------------| ---- |
+| FrontEnd         | React, javascript         |
+| BackEnd,Database | Firebase                  |
+| Build Tools      | Vite,TypeScript,ESLint    |
