@@ -1,10 +1,4 @@
-import {
-  collection,
-  limit,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "./firebase";
 import { useEffect, useState } from "react";
 import { IPosts } from "./components/ShowPosts";
@@ -16,8 +10,7 @@ export const useData = () => {
     const fetchPosts = async () => {
       const postsQuery = query(
         collection(db, "posts"),
-        orderBy("createdAt", "desc"),
-        limit(20)
+        orderBy("createdAt", "desc")
       );
       onSnapshot(postsQuery, (snapshot) => {
         const posts = snapshot.docs.map((doc) => {
@@ -30,6 +23,7 @@ export const useData = () => {
             tag1,
             tag2,
             title,
+            view,
           } = doc.data();
           return {
             post,
@@ -41,6 +35,7 @@ export const useData = () => {
             tag2,
             id: doc.id,
             title,
+            view,
           };
         });
         setPost(posts);
@@ -66,8 +61,7 @@ export const useComment = (docId: string) => {
     const fetchPosts = async () => {
       const postsQuery = query(
         collection(db, "posts", docId, "comments"),
-        orderBy("createdAt_comment", "asc"),
-        limit(20)
+        orderBy("createdAt_comment", "asc")
       );
       onSnapshot(postsQuery, (snapshot) => {
         const comments = snapshot.docs.map((doc) => {

@@ -49,7 +49,7 @@ export default function CreateNewPost() {
         tag1: category[1],
         tag2: category[2],
         title,
-        like: 0,
+        view: 0,
       });
     } catch (e) {
       console.log(e);

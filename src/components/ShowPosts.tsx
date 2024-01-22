@@ -12,6 +12,7 @@ export interface IPosts {
   tag1: string;
   tag2: string;
   title: string;
+  view: number;
 }
 interface IShowPosts {
   data: IPosts[];

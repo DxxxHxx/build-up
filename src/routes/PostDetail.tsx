@@ -33,6 +33,8 @@ export default function PostDetail() {
   const [updatedTitle, setUpdatedTitle] = useState("");
   const [updatedPost, setUpdatedPost] = useState("");
 
+  // console.log(posts.filter((item) => item.id == id))
+  // console.log(posts);
   useEffect(() => {
     if (post?.title !== undefined) {
       setUpdatedTitle(`${post?.title}`);
@@ -94,7 +96,7 @@ export default function PostDetail() {
 
   return (
     <>
-      {posts.length !== 0 ? (
+      {post !== undefined ? (
         <div className=" w-4/5 m-auto p-3 mt-3">
           <div className="flex flex-col gap-y-5 sm:border-b-2 md:border-b-4 py-5">
             <IoMdArrowBack

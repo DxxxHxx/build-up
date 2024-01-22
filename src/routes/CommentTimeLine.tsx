@@ -5,7 +5,7 @@ import { useData } from "../fetch";
 import Post from "../components/Post";
 import { Link } from "react-router-dom";
 
-interface ICommentedPost {
+export interface ICommentedPost {
   postId: string;
   comment: DocumentData[];
 }

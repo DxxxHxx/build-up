@@ -66,6 +66,7 @@ export default function Pagenation({ category }: IPagenation) {
             tag1,
             tag2,
             title,
+            view,
           } = doc.data();
 
           return {
@@ -77,6 +78,7 @@ export default function Pagenation({ category }: IPagenation) {
             tag1,
             tag2,
             title,
+            view,
             id: doc.id,
           };
         });
@@ -112,6 +114,7 @@ export default function Pagenation({ category }: IPagenation) {
               tag1,
               tag2,
               title,
+              view,
             } = doc.data();
 
             return {
@@ -123,6 +126,7 @@ export default function Pagenation({ category }: IPagenation) {
               tag1,
               tag2,
               title,
+              view,
               id: doc.id,
             };
           });
@@ -159,6 +163,7 @@ export default function Pagenation({ category }: IPagenation) {
               tag1,
               tag2,
               title,
+              view,
             } = doc.data();
 
             return {
@@ -170,6 +175,7 @@ export default function Pagenation({ category }: IPagenation) {
               tag1,
               tag2,
               title,
+              view,
               id: doc.id,
             };
           });

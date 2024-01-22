@@ -19,20 +19,19 @@ export default function FreeTab() {
   const filterValue = useRecoilValue<IpostFilteringAtom>(postFilteringAtom);
   const resetFilter = useResetRecoilState(postFilteringAtom);
 
-  
   const beforeFiltering = Object.values(filterValue).every(
     (item) => item === ""
-    );
-    const filteredPost = posts.filter((item) => {
-      if (filterValue.tag1 === "" && filterValue.tag2 !== "") {
-        return filterValue.tag2 === item.tag2;
-      } else if (filterValue.tag1 !== "" && filterValue.tag2 === "") {
-        return filterValue.tag1 === item.tag1;
-      } else if (filterValue.tag1 !== "" && filterValue.tag2 !== "") {
-        return item.tag1 === filterValue.tag1 && item.tag2 === filterValue.tag2;
-      }
-    });
-    // console.log(filteredPost)
+  );
+  const filteredPost = posts.filter((item) => {
+    if (filterValue.tag1 === "" && filterValue.tag2 !== "") {
+      return filterValue.tag2 === item.tag2;
+    } else if (filterValue.tag1 !== "" && filterValue.tag2 === "") {
+      return filterValue.tag1 === item.tag1;
+    } else if (filterValue.tag1 !== "" && filterValue.tag2 !== "") {
+      return item.tag1 === filterValue.tag1 && item.tag2 === filterValue.tag2;
+    }
+  });
+  // console.log(filteredPost)
 
   useEffect(() => {
     let unSubscribe: Unsubscribe | null = null;
@@ -56,6 +55,7 @@ export default function FreeTab() {
             tag2,
             title,
             like,
+            view,
           } = doc.data();
           return {
             post,
@@ -68,6 +68,7 @@ export default function FreeTab() {
             id: doc.id,
             title,
             like,
+            view,
           };
         });
         setPosts(posts);

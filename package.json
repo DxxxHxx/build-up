@@ -8,13 +8,12 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy":"npm run build",
-    "deploy":"firebase deploy"
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@tinymce/tinymce-react": "^4.3.2",
     "firebase": "^10.7.1",
-    "fotmob": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
@@ -22,10 +21,10 @@
     "react-slick": "^0.29.0",
     "recoil": "^0.7.7",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.0.5",
     "vite-plugin-require": "^1.1.14"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/react-slick": "^0.23.13",

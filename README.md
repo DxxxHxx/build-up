@@ -8,7 +8,7 @@
 지역을 선택하고 같이 경기를 뛸 사람들을 찾아보세요.
 원하는 포지션을 선택해서 용병을 구할 수 있어요.
 
-## [build-up 구경하기](https://build-up-4925c.web.app/free)
+## ⚽[build-up 구경하기](https://build-up-4925c.web.app/free)
 ----
 
 ## 프로젝트 소개
@@ -23,3 +23,6 @@
 | FrontEnd         | React, javascript         |
 | BackEnd,Database | Firebase                  |
 | Build Tools      | Vite,TypeScript,ESLint    |
+
+## 정보
+- [pre기획()]

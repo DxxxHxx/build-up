@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     init();
   }, []);
+
   return (
     <RecoilRoot>
       {loading ? (

@@ -35,6 +35,7 @@ export default function PostTimeLine() {
             tag1,
             tag2,
             title,
+            view,
           } = doc.data();
           return {
             post,
@@ -45,6 +46,7 @@ export default function PostTimeLine() {
             tag1,
             tag2,
             title,
+            view,
             id: doc.id,
           };
         });

@@ -56,6 +56,7 @@ export default function MorningSoccerTab() {
             tag2,
             title,
             like,
+            view,
           } = doc.data();
           return {
             post,
@@ -68,6 +69,7 @@ export default function MorningSoccerTab() {
             id: doc.id,
             title,
             like,
+            view,
           };
         });
         setPosts(posts);
