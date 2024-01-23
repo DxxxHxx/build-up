@@ -11,6 +11,7 @@ import {
 import { updateProfile } from "firebase/auth";
 import {
   collection,
+  collectionGroup,
   doc,
   getDocs,
   query,
@@ -18,6 +19,7 @@ import {
   where,
 } from "firebase/firestore";
 import { FaArrowLeft } from "react-icons/fa";
+import { ICommentedPost } from "./CommentTimeLine";
 
 export default function Profile() {
   const user = auth.currentUser;
@@ -29,6 +31,43 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
   const [nameLoading, setNameLoading] = useState(false);
   const navigate = useNavigate();
+  const [commentedPost, setCommentedPost] = useState<ICommentedPost[]>([]);
+  const fetchPostsAndComments = async () => {
+    const postsQuery = query(collection(db, "posts"));
+    const postsSnapshot = await getDocs(postsQuery);
+
+    const postsData = [];
+
+    for (const postDoc of postsSnapshot.docs) {
+      const commentsQuery = query(
+        collection(db, "posts", postDoc.id, "comments")
+      );
+
+      const commentSnapshot = await getDocs(commentsQuery);
+      const commentData = commentSnapshot.docs.map((likeDoc) => likeDoc.data());
+
+      postsData.push({
+        postId: postDoc.id,
+        comment: commentData,
+      });
+    }
+
+    return postsData;
+  };
+
+  // fetchPostsAndComments().then((res) => console.log(res));
+
+  useEffect(() => {
+    const getMyCommentedPost = async () => {
+      const allPosts = await fetchPostsAndComments();
+
+      const postsWithLikesCountGreaterThanTen = allPosts.filter((post) =>
+        post.comment.some((item) => item.userId_comment === user?.uid)
+      );
+      return postsWithLikesCountGreaterThanTen;
+    };
+    getMyCommentedPost().then((res) => setCommentedPost([...res]));
+  }, [user?.uid]);
 
   useEffect(() => {
     if (!user) {
@@ -100,13 +139,20 @@ export default function Profile() {
       } else {
         const q1 = query(
           collection(db, "posts"),
-          where("userName", "==", user?.displayName)
+          where("userId", "==", user?.uid)
         );
+        const q2 = query(
+          collectionGroup(db, "comments"),
+          where("userId_comment", "==", user?.uid)
+        );
+
         const snapshot = await getDocs(q1);
         setNameLoading(true);
         const res = snapshot.docs.map((doc) => {
           return doc.id;
         });
+        const commentRes = (await getDocs(q2)).docs.map((doc) => doc.id);
+        // console.log(commentRes);
 
         try {
           for (let i = 0; i < res.length; i++) {
@@ -121,6 +167,18 @@ export default function Profile() {
               displayName: name,
             });
           }
+          for (let i = 0; i < commentedPost.length; i++) {
+            const postsRef = doc(
+              db,
+              "posts",
+              commentedPost[i].postId,
+              "comments",
+              commentRes[i]
+            );
+            await updateDoc(postsRef, {
+              username_comment: name,
+            });
+          }
         } catch (e) {
           console.log(e);
         }
@@ -130,6 +188,7 @@ export default function Profile() {
     }
   };
 
+  // console.log(commentedPost)
   return (
     <div className="flex flex-col items-center">
       <div className="grid grid-cols-9 w-full items-center">

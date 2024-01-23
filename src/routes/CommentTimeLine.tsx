@@ -11,10 +11,10 @@ export interface ICommentedPost {
 }
 export default function CommentTimeLine() {
   const user = auth.currentUser;
-  const [commentedPost, setCommentedPost] = useState<ICommentedPost[]>([]);
   const [loading, setLoading] = useState(true);
   const posts = useData();
-
+  
+  const [commentedPost, setCommentedPost] = useState<ICommentedPost[]>([]);
   const fetchPostsAndComments = async () => {
     const postsQuery = query(collection(db, "posts"));
     const postsSnapshot = await getDocs(postsQuery);
