@@ -190,8 +190,8 @@ export default function Profile() {
 
   // console.log(commentedPost)
   return (
-    <div className="flex flex-col items-center">
-      <div className="grid grid-cols-9 w-full items-center">
+    <div className="flex flex-col items-center relative">
+      <div className="grid grid-cols-9 grid-rows-1 w-full items-center">
         {loading && (
           <div className="text-center absolute left-0 right-0 m-auto">
             <span className="loading loading-dots loading-lg "></span>
