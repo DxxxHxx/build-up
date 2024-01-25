@@ -42,7 +42,9 @@ export default function Pagenation({ category }: IPagenation) {
   const inputValue = useRecoilValue(inputAtom);
 
   const searchList = divideTabPosts.filter(
-    (post) => post.title.indexOf(inputValue) !== -1 && inputValue !== ""
+    (post) =>
+      post.title.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1 &&
+      inputValue !== ""
   );
 
   useEffect(() => {
